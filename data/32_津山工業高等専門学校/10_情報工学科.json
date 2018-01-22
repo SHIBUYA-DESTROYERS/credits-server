@@ -1,0 +1,21 @@
+{
+  "title": "情報工学科",
+  "year": 2017,
+  "url": "https://syllabus.kosen-k.go.jp/Pages/PublicSubjects?school_id=32&department_id=29&year=2017",
+  "0001": {
+    "title": "国語III",
+    "kind1": "一般",
+    "kind2": "必修",
+    "kind3": "履修単位",
+    "grade": 3,
+    "teacher": "江原 由美子"
+  },
+  "0002": {
+    "title": "微分積分II",
+    "kind1": "一般",
+    "kind2": "必修",
+    "kind3": "学修単位",
+    "grade": 3,
+    "teacher": "有本 茂,山中 聡"
+  }
+}
