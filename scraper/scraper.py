@@ -89,9 +89,8 @@ def get_class(base_url, school_dict):
                     school_dict[school_num]['depts'][dept_num]['classes'] = class_dict[dept_num]
                 except IndexError:
                     pass
-            # time.sleep(1)
+            time.sleep(1)
     return school_dict
-
 
 def main():
     base_url = 'https://syllabus.kosen-k.go.jp'

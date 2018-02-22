@@ -1,41 +1,112 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="ja">
 <head>
-    <title>Material Components for the web</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="node_modules/material-components-web/dist/material-components-web.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="node_modules/onsenui/css/onsenui.min.css">
+    <link rel="stylesheet" href="node_modules/onsenui/css/onsen-css-components.css">
 </head>
-<body class="mdc-typography">
-<div class="mdc-list mdc-list--two-line mdc-list--avatar-list">
-    <a class="mdc-list-item" href="/32/">
-            <span class="mdc-list-item__graphic" role="presentation">
-                <i class="material-icons" aria-hidden="true">school</i>
-            </span>
-            <span class="mdc-list-item__text">
-                津山工業高等専門学校
-            </span>
-    </a>
-    <a class="mdc-list-item">
-        <span class="mdc-list-item__graphic" role="presentation">
-            <i class="material-icons" aria-hidden="true">school</i>
-        </span>
-        <span class="mdc-list-item__text">
-            XX高等専門学校
-        </span>
-    </a>
-    <a class="mdc-list-item">
-        <span class="mdc-list-item__graphic" role="presentation">
-            <i class="material-icons" aria-hidden="true">school</i>
-        </span>
-        <span class="mdc-list-item__text">
-            YY工業高等専門学校
-        </span>
-    </a>
+<body>
 
-</div>
-<script src="node_modules/material-components-web/dist/material-components-web.js"></script>
-<script>mdc.autoInit()</script>
+<template id="main">
+    <v-ons-page>
+        <v-ons-toolbar>
+            <div class="center">{{ title }}</div>
+        </v-ons-toolbar>
+
+        <v-ons-tabbar swipeable position="auto"
+                      :tabs="tabs"
+                      :visible="true"
+                      :index.sync="activeIndex"
+        >
+        </v-ons-tabbar>
+    </v-ons-page>
+</template>
+
+<template id="home">
+    <v-ons-page>
+        <p style="text-align: center">
+            Welcome home.<br><br>{{ myProp }}
+        </p>
+    </v-ons-page>
+</template>
+
+<template id="news">
+    <v-ons-page>
+        <p style="text-align: center">
+            Some news here.
+        </p>
+    </v-ons-page>
+</template>
+
+<template id="settings">
+    <v-ons-page>
+        <p style="text-align: center">
+            Change the settings.
+        </p>
+    </v-ons-page>
+</template>
+
+<div id="app"></div>
+
+<script src="node_modules/vue/dist/vue.min.js"></script>
+<script src="node_modules/onsenui/js/onsenui.js"></script>
+<script src="node_modules/vue-onsenui/dist/vue-onsenui.min.js"></script>
+<script>
+    const homePage = {
+        template: '#home',
+        props: ['myProp']
+    };
+
+    const newsPage = {
+        template: '#news'
+    };
+
+    const settingsPage = {
+        template: '#settings'
+    };
+
+    new Vue({
+        el: '#app',
+        template: '#main',
+        data() {
+            return {
+                activeIndex: 0,
+                tabs: [
+                    {
+                        icon: this.md() ? null : 'ion-home',
+                        label: 'Home',
+                        page: homePage,
+                        props: {
+                            myProp: 'This is a page prop!'
+                        },
+                        key: "homePage"
+                    },
+                    {
+                        icon: this.md() ? null : 'ion-ios-bell',
+                        label: 'News',
+                        page: newsPage,
+                        badge: 7,
+                        key: "newsPage"
+                    },
+                    {
+                        icon: this.md() ? null : 'ion-ios-settings',
+                        label: 'Settings',
+                        page: settingsPage,
+                        key: "settingsPage"
+                    }
+                ]
+            };
+        },
+        methods: {
+            md() {
+                return this.$ons.platform.isAndroid();
+            }
+        },
+        computed: {
+            title() {
+                return this.tabs[this.activeIndex].label;
+            }
+        }
+    });
+</script>
 </body>
 </html>
