@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="node_modules/onsenui/css/onsenui.min.css">
     <link rel="stylesheet" href="node_modules/onsenui/css/onsen-css-components.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
@@ -31,9 +32,25 @@
 
 <template id="news">
     <v-ons-page>
-        <p style="text-align: center">
-            Some news here.
-        </p>
+        <v-ons-list>
+
+            <v-ons-list-header>Tappable / Ripple</v-ons-list-header>
+            <ons-list-item tappable>
+                <label class="right">
+                    <ons-checkbox input-id="check-1"></ons-checkbox>
+                </label>
+                <label for="check-1" class="center">
+                    <div class="font-large">
+                        <span class="credits">2</span>
+                    </div>
+                    <div class="circle">
+                        <span class="type-1">必</span>
+                    </div>
+                    <span class="class-name">情報通信工学</span>
+                </label>
+            </ons-list-item>
+
+        </v-ons-list>
     </v-ons-page>
 </template>
 
