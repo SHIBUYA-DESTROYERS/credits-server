@@ -35,7 +35,7 @@ def get_model():
 
 def read_model():
     """ Load JSON """
-    file_name = "../data/data.json"
+    file_name = "data/data.json"
     try:
         with open(file_name, 'r') as f:
             return json.load(f)
